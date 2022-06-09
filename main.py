@@ -16,6 +16,27 @@ emotion_labels = {0: "Happy", 1: "Neutral", 2: "Sad"}
 mental_health_labels = {0: "Butuh Penanganan", 1: "Tidak Butuh Penanganan"}
 
 
+connection = "fabled-variety-351411:us-central1:cloud-sql-instance-2"
+db = "my_db"
+user = "root"
+password = "mindjoy"
+
+pool = sqlalchemy.create_engine(
+    sqlalchemy.engine.url.URL.create(
+        drivername="mysql+pymysql",
+        username=db,  
+        password=user,  
+        database=password,
+        query=dict({"unix_socket": "/cloudsql/{}".format(connection)})
+    ),
+    pool_size=5,
+    max_overflow=2,
+    pool_timeout=30,
+    pool_recycle=1800
+)
+
+
+
 def predictMentalHealth(data):
     # load model
     model = load_model("mental-health-03.h5")
@@ -298,25 +319,6 @@ def emotionReq():
         return jsonify({"result": resp})
 
 
-connection = "fabled-variety-351411:us-central1:cloud-sql-instance-2"
-db = "my_db"
-user = "root"
-password = "mindjoy"
-
-pool = sqlalchemy.create_engine(
-    sqlalchemy.engine.url.URL.create(
-        drivername="mysql+pymysql",
-        username=db,  
-        password=user,  
-        database=password,
-        query=dict({"unix_socket": "/cloudsql/{}".format(connection)})
-    ),
-    pool_size=5,
-    max_overflow=2,
-    pool_timeout=30,
-    pool_recycle=1800
-)
-
 
 @app.route("/register", methods=["POST", "GET"])
 def register(): 
@@ -330,7 +332,7 @@ def register():
         return jsonify({"message": "Register Failed"})
     
     try:
-        with db.connect() as con:
+        with pool.connect() as con:
             con.execute(querysql)
             return jsonify({"message": "Register Successful"})
     except Exception as e:
@@ -348,7 +350,7 @@ def login():
         return jsonify({"message": "Login Failed"})
     
     try:
-        with db.connect() as con:
+        with pool.connect() as con:
             res = con.execute(querysql)
             if len(res) > 0:
                  return jsonify({"message": "Login Sukses"})
