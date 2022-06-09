@@ -1,0 +1,9 @@
+Flask
+gunicorn
+tensorflow
+numpy
+pillow
+pandas
+pylint
+SQLAlchemy
+PyMySQL
