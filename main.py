@@ -351,7 +351,7 @@ def login():
     
     try:
         with pool.connect() as con:
-            res = con.execute(querysql)
+            res = con.execute(querysql).fetchall()
             if len(res) > 0:
                  return jsonify({"message": "Login Sukses"})
             else:
