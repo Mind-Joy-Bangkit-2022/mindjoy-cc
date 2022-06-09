@@ -24,9 +24,9 @@ password = "mindjoy"
 pool = sqlalchemy.create_engine(
     sqlalchemy.engine.url.URL.create(
         drivername="mysql+pymysql",
-        username=db,  
-        password=user,  
-        database=password,
+        username=user,  
+        password=password,  
+        database=db,
         query=dict({"unix_socket": "/cloudsql/{}".format(connection)})
     ),
     pool_size=5,
