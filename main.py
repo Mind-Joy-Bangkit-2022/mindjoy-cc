@@ -42,12 +42,12 @@ def predictMentalHealth(data):
     model = load_model("mental-health-03.h5")
     print(data)
     predictions = model.predict(data)
-    predicted_class_indices = np.where(predictions < 0.5, 0, 1)
-    if predicted_class_indices == 0:
+    score = np.where(predictions < 0.5, 0, 1)
+    if score == 0:
         value = "Tidak Butuh Penanganan"
     else:
         value = "Butuh Penanganan"
-    return value
+    return value, score
 
 
 def processEmotion(IMG_PATH):
@@ -348,10 +348,9 @@ def mentalhHealthReq():
     features = pd.concat([data_df, features_cat], axis=1)
     features = features.drop(columns=items).loc[[0], :]
     print(features)
-    resp = predictMentalHealth(features)
+    resp, score = predictMentalHealth(features)
     
-
-    return jsonify({"result": resp})
+    return jsonify({"result": resp, "score": score})
 
 
 @app.route("/emotion", methods=["POST", 'GET'])
