@@ -40,14 +40,14 @@ pool = sqlalchemy.create_engine(
 def predictMentalHealth(data):
     # load model
     model = load_model("mental-health-03.h5")
-    print(data)
+
     predictions = model.predict(data)
     score = np.where(predictions < 0.5, 0, 1)
     if score == 0:
         value = "Tidak Butuh Penanganan"
     else:
         value = "Butuh Penanganan"
-    return value, score
+    return value, int(score)
 
 
 def processEmotion(IMG_PATH):
