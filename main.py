@@ -42,8 +42,8 @@ def predictMentalHealth(data):
     model = load_model("mental-health-03.h5")
 
     predictions = model.predict(data)
-    score = np.where(predictions < 0.5, 0, 1)
-    if score == 0:
+    # score = np.where(predictions < 0.5, 0, 1)
+    if predictions < 0.5:
         value = "Tidak Butuh Penanganan"
     else:
         value = "Butuh Penanganan"
@@ -365,13 +365,13 @@ def mentalhHealthReq():
     #          substance_abuse, using_gadget, appoinment, get_offended, vulnerable_lonely, comfort], data_dummy]
 
     print(data)
-    data_df = pd.DataFrame(data=data, columns=items)
+    # data_df = pd.DataFrame(data=data, columns=items)
 
-    features_cat = pd.get_dummies(data_df[items].astype('category'))
-    features = pd.concat([data_df, features_cat], axis=1)
-    features = features.drop(columns=items).loc[[0], :]
-    print(features)
-    resp, score = predictMentalHealth(features)
+    # features_cat = pd.get_dummies(data_df[items].astype('category'))
+    # features = pd.concat([data_df, features_cat], axis=1)
+    # features = features.drop(columns=items).loc[[0], :]
+    # print(features)
+    resp, score = predictMentalHealth(data)
     
     return jsonify({"result": resp, "score": score})
 
