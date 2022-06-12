@@ -50,13 +50,36 @@ def predictMentalHealth(data):
     return value, int(score)
 
 
-def processEmotion(IMG_PATH):
+# def processEmotion(IMG_PATH):
+#     # load model
+#     model = load_model("emotion_classification_01.h5")
+
+#     img = image.load_img(IMG_PATH, target_size=(150, 150))
+#     x = image.img_to_array(img)
+#     x = np.expand_dims(x, axis=0)
+#     images = np.vstack([x])
+#     # because on train and test image is normalized, on image predict supposed to be too.
+#     images /= 255
+#     # the value is not always 1 and 0 because of probabilities
+#     classes = model.predict(images, 64)
+#     # use to check prediction that have higher probabilities
+#     predicted_class_indices = np.argmax(classes)
+#     value = "empty"
+#     if predicted_class_indices == 0:
+#         value = 'Happy'
+#     elif predicted_class_indices == 1:
+#         value = 'Neutral'
+#     else:
+#         value = 'Sad'
+#     return value
+
+def processEmotion(img):
     # load model
     model = load_model("emotion_classification_01.h5")
 
-    img = image.load_img(IMG_PATH, target_size=(150, 150))
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
+    x = tf.image.resize(x, [48, 48])
     images = np.vstack([x])
     # because on train and test image is normalized, on image predict supposed to be too.
     images /= 255
