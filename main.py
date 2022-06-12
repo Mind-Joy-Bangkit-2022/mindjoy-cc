@@ -47,7 +47,7 @@ def predictMentalHealth(data):
         value = "Tidak Butuh Penanganan"
     else:
         value = "Butuh Penanganan"
-    return value, int(score)
+    return value, int(predictions)
 
 
 # def processEmotion(IMG_PATH):
@@ -371,9 +371,9 @@ def mentalhHealthReq():
     # features = pd.concat([data_df, features_cat], axis=1)
     # features = features.drop(columns=items).loc[[0], :]
     # print(features)
-    resp, score = predictMentalHealth(data)
+    resp, predictions = predictMentalHealth(data)
     
-    return jsonify({"result": resp, "score": score})
+    return jsonify({"result": resp, "score": predictions})
 
 
 @app.route("/emotion", methods=["POST", 'GET'])
