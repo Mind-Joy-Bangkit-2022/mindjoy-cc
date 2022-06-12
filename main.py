@@ -335,7 +335,7 @@ def mentalhHealthReq():
     else:
         return jsonify({"comfortable error": "Not Available"})
 
-     data = [data_dummy]
+    data = [data_dummy]
     # data = [[age, gender, feeling, sadness, time, activities_interest, confident, supported, doing_thing, medical,
     #          substance_abuse, using_gadget, appoinment, get_offended, vulnerable_lonely, comfort], data_dummy]
 
