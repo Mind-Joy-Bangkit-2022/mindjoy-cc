@@ -104,41 +104,27 @@ def mentalhHealthReq():
     
 
 
-    # datajsn = request.get_json()
+    datajsn = request.get_json()
+    
 
-    gender = int(request.form['Gender'])
-    age = int(request.form['Are you above 30 years of age?'])
-    feeling = int(request.form['How are you feeling today?'])
-    sadness = int(request.form['Is your sadness momentarily or has it been constant for a long time?'])
-    time = int(request.form['At what time of the day are you extremely low?'])
-    interest = int(request.form['How frequently have you had little pleasure or interest in the activities you usually enjoy?'])
-    confident = int(request.form['How confident you have been feeling in your capabilities recently.'])
-    supported = int(request.form['Describe how ‘supported’ you feel by others around you – your friends, family, or otherwise.'])
-    things = int(request.form['How frequently have you been doing things that mean something to you or your life?'])
-    medical = int(request.form['How easy is it for you to take medical leave for a mental health condition?'])
-    substance = int(request.form['How often do you make use of substance abuse(e.g. smoking, alcohol)?'])
-    hours = int(request.form['How many hours do you spend per day on watching mobile phone, laptop, computer, television, etc.?'])
-    appointment = int(request.form['If sad, how likely are you to take an appointment with a psychologist or a counsellor for your current mental state?'])
-    offended = int(request.form['How often do you get offended or angry or start crying ?'])
-    vulnerable = int(request.form['How likely do you feel yourself vulnerable or lonely?'])
-    comfortable = int(request.form['How comfortable are you in talking about your mental health?'])
+    gender = int(datajsn['gender'])
+    age = int(datajsn['age'])
+    feeling = int(datajsn['feeling'])
+    sadness = int(datajsn['sadness'])
+    time = int(datajsn['time'])
+    interest = int(datajsn['interest'])
+    confident = int(datajsn['confident'])
+    supported = int(datajsn['supported'])
+    things = int(datajsn['things'])
+    medical = int(datajsn['medical'])
+    substance = int(datajsn['substance'])
+    hours = int(datajsn['hours'])
+    appointment = int(datajsn['appointment'])
+    offended = int(datajsn['offended'])
+    vulnerable = int(datajsn['vulnerable'])
+    comfortable = int(datajsn['comfortable'])
 
-    # gender = 1
-    # age = 1
-    # feeling = 1
-    # sadness = 1
-    # time = 1
-    # interest = 1
-    # confident = 1
-    # supported = 1
-    # things = 1
-    # medical = 1
-    # substance = 1
-    # hours = 1
-    # appointment = 1
-    # offended = 1
-    # vulnerable = 1
-    # comfortable = 1
+
     
     
 
