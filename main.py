@@ -39,8 +39,7 @@ pool = sqlalchemy.create_engine(
 
 def predictMentalHealth(data):
     # load model
-    model = load_model("mental-health-03.h5", custom_objects={
-        'KerasLayer': tfhub.KerasLayer})
+    model = load_model("mental-health-03.h5")
     print(data)
     predictions = model.predict(data)
     predicted_class_indices = np.where(predictions < 0.5, 0, 1)
@@ -53,8 +52,7 @@ def predictMentalHealth(data):
 
 def processEmotion(IMG_PATH):
     # load model
-    model = load_model("emotion_classification_01.h5", custom_objects={
-        'KerasLayer': tfhub.KerasLayer})
+    model = load_model("emotion_classification_01.h5")
 
     img = image.load_img(IMG_PATH, target_size=(150, 150))
     x = image.img_to_array(img)
@@ -99,14 +97,14 @@ def mentalhHealthReq():
              'How likely do you feel yourself vulnerable or lonely?',
              'How comfortable are you in talking about your mental health?']
 
-    for item in items:
-        if item not in request.form:
-            msg = item + " is empty"
-            return jsonify({"error": msg})
+    # for item in items:
+    #     if item not in request.form:
+    #         msg = item + " is empty"
+    #         return jsonify({"error": msg})
     
 
 
-    datajsn = request.get_json()
+    # datajsn = request.get_json()
 
     gender = int(request.form.get('Gender'))
     age = int(request.form.get('Are you above 30 years of age?'))
@@ -124,6 +122,24 @@ def mentalhHealthReq():
     offended = int(request.form.get('How often do you get offended or angry or start crying ?'))
     vulnerable = int(request.form.get('How likely do you feel yourself vulnerable or lonely?'))
     comfortable = int(request.form.get('How comfortable are you in talking about your mental health?'))
+
+    # gender = 1
+    # age = 1
+    # feeling = 1
+    # sadness = 1
+    # time = 1
+    # interest = 1
+    # confident = 1
+    # supported = 1
+    # things = 1
+    # medical = 1
+    # substance = 1
+    # hours = 1
+    # appointment = 1
+    # offended = 1
+    # vulnerable = 1
+    # comfortable = 1
+    
     
 
     # gender = 1
@@ -342,9 +358,9 @@ def mentalhHealthReq():
     print(data)
     data_df = pd.DataFrame(data=data, columns=items)
 
-    features_cat = pd.get_dummies(data_df[items_cat].astype('category'))
+    features_cat = pd.get_dummies(data_df[items].astype('category'))
     features = pd.concat([data_df, features_cat], axis=1)
-    features = features.drop(columns=items_cat).loc[[0], :]
+    features = features.drop(columns=items).loc[[0], :]
     print(features)
     resp = predictMentalHealth(features)
     
