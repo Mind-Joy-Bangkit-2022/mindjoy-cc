@@ -36,6 +36,14 @@ This is the documentation for our revision API. We're doing this revision becaus
 - endpoint : `/emotion`
 - parameter : image -> file
 
+#### Development Features
+1. Visual Code Studio
+2. Google Cloud Platform
+   - Cloud Run
+   - Cloud SQL
+   - Cloud Build
+   - Postman
+   -  MySql Workbench 8.0
 ### LANDING PAGE DOCUMENTATION
 This is a documentation for our Landing Page. There are Home page to describe about our app, screenshots of our app features, pictures of our team members, our hope for this app, and the footer session for our Linkedin and Github repository.
 </br>
