@@ -44,7 +44,14 @@ This is the documentation for our revision API. We're doing this revision becaus
    - Cloud Build
    - Postman
    -  MySql Workbench 8.0
-
+#### Installation
+1. Create instance in SQL, then make a database containing two tables, one for register and one for quiz.
+2. Connect the SQL to Cloud run using the instance.
+3. Push the code to Github repository.
+4. Clone the repository to Cloud Run use `git clone`.
+5. Use `git commit -m` to commit the repository.
+6. Deploy API and Flask model, and check the status in Cloud Build.
+7. Test the result URL in postman use the endpoint. 
 
 
 
