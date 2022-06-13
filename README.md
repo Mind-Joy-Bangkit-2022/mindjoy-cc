@@ -4,13 +4,13 @@ This is the documentation for our revision API. We're doing this revision becaus
 
 ### Deploy Backend Register
 - URL : `https://mindjoy-cc-avpq3ri45q-as.a.run.app`
-- endpoint : /register
+- endpoint : `/register`
 - parameter : (username,name,password)
 ### Deploy Backend Login
 - URL : `https://mindjoy-cc-avpq3ri45q-as.a.run.app`
 - endpoint : `/login`
 - parameter : (username,password)
-### Deploy Backend Image Expression (Machine Learning Model)
+### Deploy Model Quiz (Machine Learning Model)
 - URL : `https://mindjoy-cc-avpq3ri45q-as.a.run.app`
 - endpoint : `/mentalhealth`
 - parameter :
@@ -30,4 +30,14 @@ This is the documentation for our revision API. We're doing this revision becaus
     "offended" : 1,
     "vulnerable" : 1,
     "comfortable" : 1} <br/> The parameter values is integer/number.
+
+### Deploy Model Image Expression (Machine Learning Model)
+- URL : `https://mindjoy-cc-avpq3ri45q-as.a.run.app`
+- endpoint : `/emotion`
+- parameter : image -> file
+
+### LANDING PAGE DOCUMENTATION
+![home Page - ](https://user-images.githubusercontent.com/79590008/173270381-7626f3f6-dae2-4994-90bd-da9857045e39.png)
+ 
+
 
