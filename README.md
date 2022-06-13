@@ -29,7 +29,5 @@ This is the documentation for our revision API. We're doing this revision becaus
     "appointment" : 1,
     "offended" : 1,
     "vulnerable" : 1,
-    "comfortable" : 1}
-<br/>
-The parameter values is integer/number.
+    "comfortable" : 1} <br/> The parameter values is integer/number.
 
